@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prestige Gallery — Floral Haute Horlogerie & Atelier · Tashkent</title>
+  <meta name="description"
+    content="Премиальный флористический дом в Ташкенте. Авторские букеты, королевские розы из Эквадора, доставка курьером в белых перчатках от 60 минут.">
+
+  <!-- Google Fonts: Playfair Display, Cormorant Garamond, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/aos.css">
+</head>
+
+<body>
+
+  <!-- Main Navigation Header (Floating Pill - Inspired by fl1.jpg) -->
+  <header class="main-header">
+    <div class="container main-header-inner">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" onclick="navigateTo('home')">
+        <img src="assets/images/logo.png" alt="Prestige Gallery Logo" class="brand-crest-img">
+        <span class="brand-name">Prestige Gallery</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav">
+        <a href="#home" class="nav-link active" data-route="home">Главная</a>
+        <a href="#catalog" class="nav-link" data-route="catalog">Каталог</a>
+        <a href="#catalog" class="nav-link" data-route="savatlar" onclick="filterCatalogBy('savatlar')">Саватлар</a>
+        <a href="#roses" class="nav-link" data-route="roses">Розы 51/101</a>
+        <a href="#delivery" class="nav-link" data-route="delivery">Доставка</a>
+      </nav>
+
+      <!-- Header Utilities -->
+      <div class="header-actions">
+        <a href="tel:+998712000088" class="header-phone-link">
+          <span class="header-phone-num">+998 (71) 200-00-88</span>
+          <span class="header-phone-sub">Консьерж-линия VIP</span>
+        </a>
+
+        <button class="action-icon-btn cart-open-btn" title="Корзина" id="header-cart-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="badge-count cart-count-badge" style="display: none;">0</span>
+        </button>
+
+        <button class="mobile-toggle-btn" id="mobile-menu-toggle" aria-label="Открыть меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Dropdown -->
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#home" class="nav-link" data-route="home">Главная</a>
+      <a href="#catalog" class="nav-link" data-route="catalog">Каталог букетов</a>
+      <a href="#catalog" class="nav-link" data-route="savatlar" onclick="filterCatalogBy('savatlar')">Саватлар (Корзины)</a>
+      <a href="#roses" class="nav-link" data-route="roses">Королевские розы</a>
+      <a href="#delivery" class="nav-link" data-route="delivery">Доставка & Консьерж</a>
+      <div class="mobile-nav-footer">
+        <a href="tel:+998712000088" class="mobile-nav-phone">
+          📞 +998 (71) 200-00-88
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       SCREEN 1: PRESTIGE GALLERY — ГЛАВНАЯ СТРАНИЦА (HOME)
+       ======================================================================== -->
+  <main id="screen-home" class="screen-view active">
+    <!-- Hero Section (Inspired by fl1.jpg + fl2.jpg Centerpiece) -->
+    <section class="hero-section">
+      <!-- Watermark Background Typography from fl1.jpg -->
+      <div class="hero-bg-watermark">PRESTIGE GALLERY</div>
+
+      <div class="container hero-grid">
+        <div class="hero-content" data-aos="fade-right" data-aos-duration="900">
+          <span class="kicker kicker-gold" data-aos="fade-down" data-aos-duration="650">АТЕЛЬЕ ВЫСОКОЙ ФЛОРИСТИКИ · ТАШКЕНТ</span>
+          <h1 class="hero-headline" data-aos="fade-up" data-aos-duration="850" data-aos-delay="100">
+            Искусство говорить <span class="gold-italic">без слов.</span>
+          </h1>
+          <div class="hero-actions" data-aos="fade-up" data-aos-duration="850" data-aos-delay="200">
+            <button class="btn btn-primary btn-lg" onclick="navigateTo('catalog')">
+              СМОТРЕТЬ КАТАЛОГ
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+            <button class="btn btn-outline-gold btn-lg" onclick="openFastOrderModal(PRODUCTS_DATA[0])">
+              КОНСУЛЬТАЦИЯ VIP
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-media-wrap" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="150">
+          <div class="hero-image-card">
+            <!-- Centerpiece: fl2.jpg with Prestige Gallery gold card -->
+            <img src="assets/images/fl2.jpg" alt="Prestige Gallery Grand Bouquet" />
+            <div class="hero-top-tag">👑 ГРАНД-КОЛЛЕКЦИЯ</div>
+            <div class="hero-floating-badge" data-aos="zoom-in-up" data-aos-duration="750" data-aos-delay="500">
+              <div>
+                <div class="hero-badge-text">Prestige Grand Bouquet</div>
+                <div class="hero-badge-sub">Розы, орхидеи & VIP открытка PG</div>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openFastOrderModal(PRODUCTS_DATA[0])">ЗАКАЗАТЬ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bestsellers Section -->
+    <section class="section-padding section-bg-muted">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+          <h2 class="section-title">Красота для особенных <span class="italic">моментов</span></h2>
+        </div>
+
+        <div class="products-grid" id="home-bestsellers-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;" data-aos="zoom-in" data-aos-duration="700"
+          data-aos-delay="150">
+          <button class="btn btn-primary btn-lg" onclick="navigateTo('catalog')">
+            СМОТРЕТЬ ВСЮ КОЛЛЕКЦИЮ (48 БУКЕТОВ)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dedicated Savatlar Showcase Section (New Category) -->
+    <section class="savatlar-section" id="home-savatlar-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+          <h2 class="section-title">Цветочные корзины <span class="italic">Саватлар</span></h2>
+          <p class="section-subtitle">Монументальные гранд-композиции в плетеных корзинах из натуральной лозы со
+            специальным аква-оазисом и фирменной открыткой со сургучной печатью.</p>
+        </div>
+
+        <div class="products-grid" id="home-savatlar-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="savatlar-banner" data-aos="zoom-in" data-aos-duration="850">
+          <div>
+            <span class="kicker kicker-gold">ИНДИВИДУАЛЬНАЯ ГРАНД-КОРЗИНА</span>
+            <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: #ffffff; margin: 6px 0 8px 0;">Нужна
+              корзина по индивидуальному заказу?</h3>
+            <p style="color: var(--color-text-body); font-size: 0.9rem; margin: 0;">Соберем корзину из 101, 125 или 201
+              отборной розы редких сортов под ваш протокольный праздник.</p>
+          </div>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-lg" onclick="filterCatalogBy('savatlar')">СМОТРЕТЬ ВСЕ САВАТЛАР</button>
+            <button class="btn btn-secondary btn-lg"
+              onclick="openFastOrderModal(PRODUCTS_DATA.find(p => p.id === 'savat-panier-royal-blanc') || PRODUCTS_DATA[0])">ЗАКАЗАТЬ
+              В 1 КЛИК</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Collections Grid -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">КОЛЛЕКЦИИ СЕЗОНА</span>
+          <h2 class="section-title">Искусство флористических <span class="italic">форм</span></h2>
+          <p class="section-subtitle">От утонченных моно-композиций до королевских охапок из 101 розы и шляпных коробок
+            Haute Couture.</p>
+        </div>
+
+        <div class="collections-grid">
+          <div class="collection-card" onclick="navigateTo('catalog')" data-aos="fade-up-right" data-aos-duration="800"
+            data-aos-delay="100">
+            <img src="assets/images/french_pink.jpg" alt="Авторские букеты" />
+            <div class="collection-scrim">
+              <h3 class="collection-title">Авторские букеты</h3>
+              <span class="collection-price-tag">от 1 650 000 UZS · Смотреть</span>
+            </div>
+          </div>
+
+          <div class="collection-card" onclick="navigateTo('roses')" data-aos="fade-up" data-aos-duration="800"
+            data-aos-delay="200">
+            <img src="assets/images/red_roses_101.jpg" alt="Королевские розы" />
+            <div class="collection-scrim">
+              <h3 class="collection-title">Королевские розы 51 / 101</h3>
+              <span class="collection-price-tag">от 1 950 000 UZS · Конструктор</span>
+            </div>
+          </div>
+
+          <div class="collection-card" onclick="navigateTo('catalog')" data-aos="fade-up-left" data-aos-duration="800"
+            data-aos-delay="300">
+            <img src="assets/images/hatbox_rouge.jpg" alt="Шляпные коробки" />
+            <div class="collection-scrim">
+              <h3 class="collection-title">Шляпные коробки Haute Couture</h3>
+              <span class="collection-price-tag">от 2 750 000 UZS · Смотреть</span>
+            </div>
+          </div>
+
+          <div class="collection-card" onclick="navigateTo('catalog')" data-aos="fade-up-right" data-aos-duration="800"
+            data-aos-delay="200">
+            <img src="assets/images/lumier_blanche.jpg" alt="Белоснежная классика" />
+            <div class="collection-scrim">
+              <h3 class="collection-title">Белоснежная коллекция</h3>
+              <span class="collection-price-tag">от 1 750 000 UZS · Смотреть</span>
+            </div>
+          </div>
+
+          <div class="collection-card" onclick="navigateTo('catalog')" data-aos="fade-up" data-aos-duration="800"
+            data-aos-delay="300">
+            <img src="assets/images/hydrangea_blue.jpg" alt="Голландские гортензии" />
+            <div class="collection-scrim">
+              <h3 class="collection-title">Облачные гортензии XXL</h3>
+              <span class="collection-price-tag">от 1 500 000 UZS · Смотреть</span>
+            </div>
+          </div>
+
+          <div class="collection-card" onclick="navigateTo('catalog')" data-aos="fade-up-left" data-aos-duration="800"
+            data-aos-delay="400">
+            <img src="assets/images/violet_orchid.jpg" alt="VIP Композиции" />
+            <div class="collection-scrim">
+              <h3 class="collection-title">VIP Экзотика & Орхидеи</h3>
+              <span class="collection-price-tag">от 3 200 000 UZS · Смотреть</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Atelier & Craftsmanship Section -->
+    <section class="section-padding section-bg-muted">
+      <div class="container atelier-grid">
+        <div class="atelier-image-wrap" data-aos="fade-right" data-aos-duration="950">
+          <img src="assets/images/florist_atelier.jpg" alt="Флорист Prestige Gallery" />
+        </div>
+        <div class="atelier-content" data-aos="fade-left" data-aos-duration="950">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">ФИЛОСОФИЯ И БЕЗУПРЕЧНЫЙ ВКУС</span>
+          <h2 class="atelier-title">Искусство дарить <span class="italic">эмоции</span></h2>
+          <p class="atelier-text">
+            Синтез парижского шика и бескомпромиссного качества. Прямые поставки с плантаций Эквадора (Котопахи) и
+            аукционов Нидерландов.
+            <br /><br />
+            Специальный микроклимат (+4°C...+8°C) на всех этапах доставки обеспечивает первозданную стойкость цветов от
+            7 до 14 дней в вашей вазе.
+          </p>
+          <div class="atelier-metrics">
+            <div data-aos="zoom-in-up" data-aos-duration="700" data-aos-delay="100">
+              <div class="metric-number">7 500+</div>
+              <div class="metric-label">Гранд-букетов</div>
+            </div>
+            <div data-aos="zoom-in-up" data-aos-duration="700" data-aos-delay="200">
+              <div class="metric-number">60 мин</div>
+              <div class="metric-label">Экспресс-доставка</div>
+            </div>
+            <div data-aos="zoom-in-up" data-aos-duration="700" data-aos-delay="300">
+              <div class="metric-number">100%</div>
+              <div class="metric-label">Гарантия свежести</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Highlights Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">ПРЕМИАЛЬНЫЙ СЕРВИС</span>
+          <h2 class="section-title">Доставка по <span class="italic">Ташкенту</span></h2>
+          <p class="section-subtitle">Пунктуальное вручение в идеальной температуре с дипломатическим этикетом.</p>
+        </div>
+
+        <div class="guarantee-grid">
+          <div class="guarantee-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <div class="guarantee-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3 class="guarantee-title">Доставка от 60 минут</h3>
+            <p class="guarantee-desc">Собственная курьерская служба бережно доставит букет в любую точку города в
+              защитном аквапаке с водой.</p>
+          </div>
+
+          <div class="guarantee-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+            <div class="guarantee-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <h3 class="guarantee-title">Курьеры в белых перчатках</h3>
+            <p class="guarantee-desc">Строгий деловой костюм, белоснежные перчатки и галантность протокольного уровня.
+            </p>
+          </div>
+
+          <div class="guarantee-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+            <div class="guarantee-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                <circle cx="12" cy="13" r="4" />
+              </svg>
+            </div>
+            <h3 class="guarantee-title">Фотоотчет перед выездом</h3>
+            <p class="guarantee-desc">Присылаем детальные фото и видео собранного букета в Telegram или WhatsApp перед
+              выездом.</p>
+          </div>
+
+          <div class="guarantee-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+            <div class="guarantee-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <h3 class="guarantee-title">Сургучная печать</h3>
+            <p class="guarantee-desc">К каждому букету прилагается открытка из плотного хлопка с вашим текстом и
+              сургучной печатью.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Classical Quotation Section -->
+    <section class="quote-section">
+      <div class="container quote-box" data-aos="zoom-in" data-aos-duration="900">
+        <div class="quote-crest" data-aos="fade-down" data-aos-delay="150">❦</div>
+        <blockquote class="quote-text" data-aos="fade-up" data-aos-delay="250">
+          «Цветы — это не просто подарок. Это безмолвное послание чувств, которое хранится в сердце навсегда.»
+        </blockquote>
+        <div class="quote-author" data-aos="fade-up" data-aos-delay="350">Prestige Gallery Atelier · Tashkent</div>
+      </div>
+    </section>
+
+    <!-- Instagram Gallery -->
+    <section class="section-padding section-bg-muted" style="padding-bottom: 40px;">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 30px;" data-aos="fade-up" data-aos-duration="700">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">INSTAGRAM ATELIER</span>
+          <h2 class="section-title">Жизнь нашего <span class="italic">ателье</span></h2>
+          <p class="section-subtitle">Следите за новыми коллекциями и закрытыми поставками: @prestige.flowers.tashkent
+          </p>
+        </div>
+
+        <div class="instagram-grid">
+          <div class="instagram-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="50"><img
+              src="assets/images/hero_bouquet.jpg" alt="Insta 1" /></div>
+          <div class="instagram-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="120"><img
+              src="assets/images/red_roses_101.jpg" alt="Insta 2" /></div>
+          <div class="instagram-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="190"><img
+              src="assets/images/french_pink.jpg" alt="Insta 3" /></div>
+          <div class="instagram-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="260"><img
+              src="assets/images/hatbox_blanc.jpg" alt="Insta 4" /></div>
+          <div class="instagram-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="330"><img
+              src="assets/images/violet_orchid.jpg" alt="Insta 5" /></div>
+          <div class="instagram-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="400"><img
+              src="assets/images/hydrangea_blue.jpg" alt="Insta 6" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIP Client Reviews -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">ОТЗЫВЫ КЛИЕНТОВ</span>
+          <h2 class="section-title">Слова наших <span class="italic">гостей</span></h2>
+          <p class="section-subtitle">Доверие ведущих предпринимателей, дипломатов и ценителей прекрасного.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card" data-aos="fade-up-right" data-aos-duration="800" data-aos-delay="100">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">«Заказывала 101 розу Explorer на юбилей мамы. Курьер в строгом черном костюме и белых
+              перчатках произвел невероятное впечатление! Цветы простояли почти две недели. Настоящий европейский
+              уровень.»</p>
+            <div class="review-author">Шахноза Умарова</div>
+            <div class="review-role">Мирабадский район · Частный клиент</div>
+          </div>
+
+          <div class="review-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">«Регулярно заказываем протокольные букеты для партнеров. Безупречная пунктуальность с
+              точностью до 10 минут, идеальная каллиграфия и сургучная печать. Лучший флористический дом в Ташкенте.»
+            </p>
+            <div class="review-author">Александр Вертинский</div>
+            <div class="review-role">Ташкент Сити · Директор фонда</div>
+          </div>
+
+          <div class="review-card" data-aos="fade-up-left" data-aos-duration="800" data-aos-delay="300">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">«Букет Château de Pivoine превзошел все ожидания. Колористика подобрана филигранно,
+              шелковые ленты, тонкий аромат — каждая деталь говорит о высоком вкусе. Спасибо за эстетику!»</p>
+            <div class="review-author">Мадина Каримова</div>
+            <div class="review-role">Дизайнер интерьеров</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action Banner -->
+    <section class="container" style="margin-bottom: 100px;">
+      <div class="cta-banner" data-aos="flip-up" data-aos-duration="900">
+        <div class="cta-banner-content" data-aos="fade-right" data-aos-delay="200">
+          <span class="kicker kicker-gold">ЭКСКЛЮЗИВНЫЙ ЗАКАЗ</span>
+          <h2>Подарите <span class="italic">эмоции.</span></h2>
+          <p>Подберем редкие селекционные сорта и соберем композицию по вашим пожеланиям. Доставка в белых перчатках от
+            60 минут.</p>
+        </div>
+        <div class="cta-banner-actions" data-aos="fade-left" data-aos-delay="300">
+          <button class="btn btn-primary btn-lg" onclick="openFastOrderModal(PRODUCTS_DATA[0])">ЗАКАЗАТЬ ЗВОНОК</button>
+          <a href="https://t.me/" target="_blank" class="btn btn-outline-gold btn-lg">НАПИСАТЬ В TELEGRAM</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       SCREEN 2: PRESTIGE GALLERY — КАТАЛОГ БУКЕТОВ (CATALOG)
+       ======================================================================== -->
+  <main id="screen-catalog" class="screen-view">
+    <div class="catalog-header" data-aos="fade-down" data-aos-duration="750">
+      <div class="container">
+        <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 12px;">
+          <a href="#home" onclick="navigateTo('home')">Главная</a> / <span>Каталог букетов</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <h1 class="section-title" style="margin-bottom: 6px;">Коллекция <span class="italic">Букетов</span></h1>
+            <p class="section-subtitle">Авторские композиции, монобукеты и редкие сорта с курьерской доставкой от 60
+              минут.</p>
+          </div>
+          <div style="display: flex; gap: 24px;" data-aos="fade-left" data-aos-duration="750" data-aos-delay="150">
+            <div style="text-align: right;">
+              <div
+                style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">
+                100%</div>
+              <div style="font-size: 0.6875rem; color: var(--color-text-muted);">СВЕЖИЙ СРЕЗ АВИА</div>
+            </div>
+            <div style="text-align: right;">
+              <div
+                style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">
+                60 мин</div>
+              <div style="font-size: 0.6875rem; color: var(--color-text-muted);">КУРЬЕРСКИЙ ВЫЕЗД</div>
+            </div>
+            <div style="text-align: right;">
+              <div
+                style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">
+                AURA</div>
+              <div style="font-size: 0.6875rem; color: var(--color-text-muted);">ФРАНЦУЗСКИЙ ШИК</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="catalog-filter-bar" data-aos="fade-up" data-aos-duration="750" data-aos-delay="100">
+          <div class="catalog-pills">
+            <button class="catalog-filter-btn active" data-filter="all">Все</button>
+            <button class="catalog-filter-btn" data-filter="savatlar">Корзины (Саватлар)</button>
+            <button class="catalog-filter-btn" data-filter="authors">Авторские</button>
+            <button class="catalog-filter-btn" data-filter="roses">Королевские розы</button>
+            <button class="catalog-filter-btn" data-filter="monobouquets">Монобукеты</button>
+            <button class="catalog-filter-btn" data-filter="vip">Премиум VIP</button>
+            <button class="catalog-filter-btn" data-filter="hydrangeas">Гортензии</button>
+            <button class="catalog-filter-btn" data-filter="boxes">Композиции в коробках</button>
+          </div>
+
+          <div class="catalog-controls">
+            <span id="catalog-items-count" style="font-size: 0.75rem; color: var(--color-text-muted);"></span>
+            <select id="catalog-sort-select" class="select-custom">
+              <option value="popular">По популярности</option>
+              <option value="price-asc">По возрастанию цены</option>
+              <option value="price-desc">По убыванию цены</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <section class="section-padding" style="padding-top: 40px;">
+      <div class="container">
+        <div class="products-grid" id="catalog-products-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Bespoke Floral Atelier Banner -->
+        <div class="cta-banner" style="margin-top: 70px;" data-aos="zoom-in" data-aos-duration="850">
+          <div class="cta-banner-content" data-aos="fade-right" data-aos-delay="150">
+            <span class="kicker kicker-gold">ИНДИВИДУАЛЬНАЯ СБОРКА</span>
+            <h2>Создадим букет <span class="italic">по вашим желаниям</span></h2>
+            <p>Укажите желаемые цветы, цветовую гамму или бюджет — мы составим проект и согласуем фото до сборки.</p>
+          </div>
+          <div class="cta-banner-actions" data-aos="fade-left" data-aos-delay="250">
+            <button class="btn btn-primary btn-lg" onclick="openFastOrderModal(PRODUCTS_DATA[0])">НАПИСАТЬ
+              КОНСЬЕРЖУ</button>
+            <a href="tel:+998712000088" class="btn btn-outline-gold btn-lg">+998 (71) 200-00-88</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       SCREEN 3: PRESTIGE GALLERY — КОЛЛЕКЦИЯ РОЗ & GRAND BUILDER (ROSES)
+       ======================================================================== -->
+  <main id="screen-roses" class="screen-view">
+    <div class="catalog-header" data-aos="fade-down" data-aos-duration="750">
+      <div class="container">
+        <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 12px;">
+          <a href="#home" onclick="navigateTo('home')">Главная</a> / <span>Королевские розы</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <h1 class="section-title" style="margin-bottom: 6px;">Королевские <span class="italic">Розы</span></h1>
+            <p class="section-subtitle">Прямой авиаимпорт с плантаций Эквадора (Cotopaxi). Стойкость в вазе до 14 дней.
+            </p>
+          </div>
+          <div class="catalog-pills" data-aos="fade-left" data-aos-duration="750" data-aos-delay="150">
+            <button class="catalog-filter-btn active">Все розы</button>
+            <button class="catalog-filter-btn">Эквадорские 70см</button>
+            <button class="catalog-filter-btn">В коробках</button>
+            <button class="catalog-filter-btn">101 роза</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rose Showcase Grid -->
+    <section class="container" style="margin-top: 40px; margin-bottom: 50px;">
+      <div class="collections-grid">
+        <div class="collection-card" style="height: 320px;" data-aos="fade-up-right" data-aos-duration="800"
+          data-aos-delay="100">
+          <img src="assets/images/red_roses_101.jpg" alt="Эквадорские розы" />
+          <div class="collection-scrim">
+            <span class="kicker kicker-gold" style="margin-bottom: 4px;">ПЛАНТАЦИЯ COTOPAXI · 70 СМ</span>
+            <h3 class="collection-title">Монументальные бутоны до 8 см</h3>
+            <span class="collection-price-tag">Бархатный сорт Explorer</span>
+          </div>
+        </div>
+        <div class="collection-card" style="height: 320px;" data-aos="fade-up" data-aos-duration="800"
+          data-aos-delay="200">
+          <img src="assets/images/french_pink.jpg" alt="Пионовидные розы" />
+          <div class="collection-scrim">
+            <span class="kicker kicker-gold" style="margin-bottom: 4px;">ГОЛЛАНДСКАЯ СЕЛЕКЦИЯ</span>
+            <h3 class="collection-title">Садовые пионовидные розы</h3>
+            <span class="collection-price-tag">Французский селекционный аромат</span>
+          </div>
+        </div>
+        <div class="collection-card" style="height: 320px;" data-aos="fade-up-left" data-aos-duration="800"
+          data-aos-delay="300">
+          <img src="assets/images/hatbox_rouge.jpg" alt="Шляпная коробка с розами" />
+          <div class="collection-scrim">
+            <span class="kicker kicker-gold" style="margin-bottom: 4px;">HAUTE COUTURE</span>
+            <h3 class="collection-title">Бархатные коробки с оазисом</h3>
+            <span class="collection-price-tag">Не требуют вазы · Стойкость 14 дней</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE GRAND ROSE BUILDER -->
+    <section class="container" id="rose-builder-wrapper" data-aos="fade-up" data-aos-duration="850">
+      <div class="builder-card-wrap">
+        <div class="section-header" style="margin-bottom: 36px;" data-aos="fade-up" data-aos-delay="100">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">ИНТЕРАКТИВНЫЙ КОНСТРУКТОР БУКЕТА</span>
+          <h2 class="section-title">Соберите ваш <span class="italic">гранд-букет</span></h2>
+          <p class="section-subtitle">Выберите количество стеблей, сорт роз и тип оформления с расчетом в реальном
+            времени.</p>
+        </div>
+
+        <div class="builder-layout">
+          <!-- Configuration Controls -->
+          <div class="builder-controls" data-aos="fade-right" data-aos-duration="800" data-aos-delay="150">
+            <!-- Step 1: Stem Count -->
+            <div class="builder-step">
+              <div class="builder-step-header">
+                <span class="builder-step-num">ШАГ 1 ИЗ 3</span>
+                <span style="font-size: 0.75rem; color: var(--color-primary); font-weight: 600;">КОЛИЧЕСТВО
+                  СТЕБЛЕЙ</span>
+              </div>
+              <div class="builder-stems-grid">
+                <button class="builder-stem-btn" data-stems="25">
+                  <div class="builder-stem-count">25</div>
+                  <div class="builder-stem-label">Комплимент</div>
+                </button>
+                <button class="builder-stem-btn active" data-stems="51">
+                  <div class="builder-stem-count">51</div>
+                  <div class="builder-stem-label">Хит выбора</div>
+                </button>
+                <button class="builder-stem-btn" data-stems="101">
+                  <div class="builder-stem-count">101</div>
+                  <div class="builder-stem-label">Королевский</div>
+                </button>
+                <button class="builder-stem-btn" data-stems="201">
+                  <div class="builder-stem-count">201</div>
+                  <div class="builder-stem-label">Императорский</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Variety & Color -->
+            <div class="builder-step">
+              <div class="builder-step-header">
+                <span class="builder-step-num">ШАГ 2 ИЗ 3</span>
+                <span style="font-size: 0.75rem; color: var(--color-primary); font-weight: 600;">СОРТ И ЦВЕТ</span>
+              </div>
+              <div class="builder-varieties-grid">
+                <div class="builder-variety-card active" data-variety="explorer">
+                  <span class="variety-color-dot" style="background-color: #8b0000;"></span>
+                  <div>
+                    <div class="variety-card-name">Explorer (Алый бархат)</div>
+                    <div class="variety-card-sub">Эквадор · Крупный бутон 8 см</div>
+                  </div>
+                </div>
+
+                <div class="builder-variety-card" data-variety="mondial">
+                  <span class="variety-color-dot" style="background-color: #f7f7f7;"></span>
+                  <div>
+                    <div class="variety-card-name">Playa Blanca (Белоснежный)</div>
+                    <div class="variety-card-sub">Эквадор · Чистый белый цвет</div>
+                  </div>
+                </div>
+
+                <div class="builder-variety-card" data-variety="kahala">
+                  <span class="variety-color-dot" style="background-color: #e29d72;"></span>
+                  <div>
+                    <div class="variety-card-name">Kahala (Персиковый закат)</div>
+                    <div class="variety-card-sub">Редкий винтажный оттенок</div>
+                  </div>
+                </div>
+
+                <div class="builder-variety-card" data-variety="hermosa">
+                  <span class="variety-color-dot" style="background-color: #d8a4ac;"></span>
+                  <div>
+                    <div class="variety-card-name">Hermosa (Пыльный пудровый)</div>
+                    <div class="variety-card-sub">Французская романтика</div>
+                  </div>
+                </div>
+
+                <div class="builder-variety-card" data-variety="sapphire">
+                  <span class="variety-color-dot" style="background-color: #2b4a78;"></span>
+                  <div>
+                    <div class="variety-card-name">Sapphire Royal (Индиго)</div>
+                    <div class="variety-card-sub">Селекционный сапфировый</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Packaging Style -->
+            <div class="builder-step">
+              <div class="builder-step-header">
+                <span class="builder-step-num">ШАГ 3 ИЗ 3</span>
+                <span style="font-size: 0.75rem; color: var(--color-primary); font-weight: 600;">ФИРМЕННОЕ
+                  ОФОРМЛЕНИЕ</span>
+              </div>
+              <div class="builder-pack-grid">
+                <div class="builder-pack-card active" data-packaging="paper">
+                  <div>
+                    <div style="font-weight: 600; font-size: 0.875rem;">Фирменная матовая бумага с шелковой лентой</div>
+                    <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 3px;">Графитовый или
+                      пудровый матовый крафт с тиснением логотипа</div>
+                  </div>
+                  <span style="font-size: 0.75rem; font-weight: 700; color: #2e7d32;">Включено</span>
+                </div>
+
+                <div class="builder-pack-card" data-packaging="box">
+                  <div>
+                    <div style="font-weight: 600; font-size: 0.875rem;">Бархатная цилиндрическая шляпная коробка</div>
+                    <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 3px;">Замшевая коробка с
+                      флористическим оазисом и золотым тиснением</div>
+                  </div>
+                  <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-primary);">+250 000 UZS</span>
+                </div>
+
+                <div class="builder-pack-card" data-packaging="vase">
+                  <div>
+                    <div style="font-weight: 600; font-size: 0.875rem;">Французская хрустальная ваза ручной работы</div>
+                    <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 3px;">Премиальная
+                      стеклянная ваза с питательным раствором Chrysal</div>
+                  </div>
+                  <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-primary);">+450 000 UZS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky Summary Card -->
+          <div class="builder-summary-col" data-aos="fade-left" data-aos-duration="800" data-aos-delay="250">
+            <div class="builder-summary-card">
+              <div class="builder-preview-img-wrap">
+                <img id="builder-preview-img" src="assets/images/red_roses_101.jpg" alt="Превью букета роз" />
+              </div>
+
+              <h3 id="builder-summary-title" class="builder-summary-title">51 королевская роза Explorer</h3>
+
+              <div class="builder-breakdown">
+                <div class="builder-row">
+                  <span>Сорт:</span>
+                  <span id="builder-summary-variety" style="font-weight: 600; text-align: right;">Explorer (Эквадор · 70
+                    см)</span>
+                </div>
+                <div class="builder-row">
+                  <span>Оформление:</span>
+                  <span id="builder-summary-pack" style="font-weight: 600; text-align: right;">Матовая бумага</span>
+                </div>
+                <div class="builder-row">
+                  <span>Стоимость роз:</span>
+                  <span id="builder-summary-stems-price">1 912 500 UZS</span>
+                </div>
+                <div class="builder-row">
+                  <span>Упаковка:</span>
+                  <span id="builder-summary-pack-price">Включено</span>
+                </div>
+              </div>
+
+              <div class="builder-total-row">
+                <span class="builder-total-label">Итоговая стоимость:</span>
+                <span id="builder-summary-total-price" class="builder-total-price">1 912 500 UZS</span>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button id="builder-add-cart-btn" class="btn btn-primary btn-lg" style="width: 100%;">
+                  ДОБАВИТЬ В КОРЗИНУ
+                </button>
+                <button id="builder-fast-order-btn" class="btn btn-secondary btn-lg" style="width: 100%;">
+                  ЗАКАЗАТЬ В 1 КЛИК
+                </button>
+              </div>
+
+              <div style="font-size: 0.6875rem; color: var(--color-text-muted); text-align: center; margin-top: 14px;">
+                ✓ Доставка курьером в белых перчатках по Ташкенту от 60 мин
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Monobouquets Grid -->
+    <section class="section-padding section-bg-muted">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="750">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">ГОТОВЫЕ РЕШЕНИЯ</span>
+          <h2 class="section-title">Коллекционные <span class="italic">Моно-букеты</span></h2>
+          <p class="section-subtitle">Собраны ведущими флористами в безупречных пропорциях и готовы к мгновенной
+            доставке.</p>
+        </div>
+
+        <div class="products-grid" id="roses-monobouquets-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       SCREEN 4: PRESTIGE GALLERY — ДОСТАВКА ПО ТАШКЕНТУ & КОНСЬЕРЖ (DELIVERY)
+       ======================================================================== -->
+  <main id="screen-delivery" class="screen-view">
+    <div class="catalog-header" data-aos="fade-down" data-aos-duration="750">
+      <div class="container">
+        <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 12px;">
+          <a href="#home" onclick="navigateTo('home')">Главная</a> / <span>Доставка & Сервис</span>
+        </div>
+        <div>
+          <h1 class="section-title" style="margin-bottom: 6px;">Доставка & Консьерж-сервис <span class="italic">в
+              Ташкенте</span></h1>
+          <p class="section-subtitle">Безупречный этикет, температурный контроль и персональный консьерж-сервис высшего
+            класса.</p>
+
+          <div class="delivery-header-badges">
+            <div class="delivery-status-card" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+              <span class="delivery-status-icon">⏱</span>
+              <div>
+                <div class="delivery-status-val">от 60 минут</div>
+                <div class="delivery-status-lbl">Срочный выезд курьера</div>
+              </div>
+            </div>
+            <div class="delivery-status-card" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
+              <span class="delivery-status-icon">❄️</span>
+              <div>
+                <div class="delivery-status-val">+10°C ... +14°C</div>
+                <div class="delivery-status-lbl">Климат-контроль в пути</div>
+              </div>
+            </div>
+            <div class="delivery-status-card" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
+              <span class="delivery-status-icon">🧤</span>
+              <div>
+                <div class="delivery-status-val">White Glove</div>
+                <div class="delivery-status-lbl">Костюм и белые перчатки</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Core Concierge Cards -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="guarantee-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="guarantee-card" data-aos="fade-up" data-aos-duration="750" data-aos-delay="100">
+            <div class="guarantee-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3 class="guarantee-title">Экспресс-доставка за 60-90 мин</h3>
+            <p class="guarantee-desc">Оперативная доставка по Ташкенту в защитном аквапаке со свежей водой.</p>
+          </div>
+
+          <div class="guarantee-card" data-aos="fade-up" data-aos-duration="750" data-aos-delay="200">
+            <div class="guarantee-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </div>
+            <h3 class="guarantee-title">Точность интервала до 15 минут</h3>
+            <p class="guarantee-desc">Укажите точное время сюрприза или протокольного события — курьер вручит букет
+              минута в минуту.</p>
+          </div>
+
+          <div class="guarantee-card" data-aos="fade-up" data-aos-duration="750" data-aos-delay="300">
+            <div class="guarantee-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <h3 class="guarantee-title">Анонимность & Сургучная печать</h3>
+            <p class="guarantee-desc">Если желаете инкогнито, имя отправителя останется в тайне. Прилагается открытка с
+              сургучной печатью.</p>
+          </div>
+        </div>
+
+        <!-- Handsome Courier Banner (Visual Centerpiece from Screen 4) -->
+        <div class="courier-banner" data-aos="zoom-in" data-aos-duration="850">
+          <div class="courier-banner-content" data-aos="fade-right" data-aos-delay="150">
+            <span class="kicker kicker-gold">ЭТАЛОННЫЙ ЭТИКЕТ</span>
+            <h2 class="courier-banner-title">Курьеры в деловых костюмах и белых перчатках</h2>
+            <p class="courier-banner-text">
+              Момент вручения так же важен, как и сам букет. Наши курьеры проходят тренинги дипломатического этикета,
+              одеты в безупречные классические костюмы и вручают букет в белых перчатках.
+            </p>
+            <div class="courier-banner-stats">
+              <div data-aos="zoom-in-up" data-aos-delay="250">
+                <div class="courier-stat-num">100%</div>
+                <div class="courier-stat-lbl">Восторг получателя</div>
+              </div>
+              <div data-aos="zoom-in-up" data-aos-delay="350">
+                <div class="courier-stat-num">&lt; 30 мин</div>
+                <div class="courier-stat-lbl">Точность интервала</div>
+              </div>
+              <div data-aos="zoom-in-up" data-aos-delay="450">
+                <div class="courier-stat-num">+12°C</div>
+                <div class="courier-stat-lbl">Климат в авто</div>
+              </div>
+            </div>
+          </div>
+          <div class="courier-banner-image" data-aos="fade-left" data-aos-delay="200">
+            <img src="assets/images/courier_luxury.jpg" alt="Курьер в белых перчатках Prestige Gallery" />
+          </div>
+        </div>
+
+        <!-- Tashkent Delivery Zones & Address Check -->
+        <div class="section-header" data-aos="fade-up" data-aos-duration="750">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">ТАРИФЫ ПО ТАШКЕНТУ</span>
+          <h2 class="section-title">Зоны покрытия по <span class="italic">Ташкенту</span></h2>
+          <p class="section-subtitle">Проверьте стоимость и расчетное время доставки на ваш адрес в реальном времени.
+          </p>
+        </div>
+
+        <div class="zones-layout">
+          <div>
+            <div class="zone-card" data-aos="fade-right" data-aos-duration="750" data-aos-delay="100">
+              <div class="zone-header">
+                <span class="zone-name">Зона 1: Центральный Ташкент</span>
+                <span class="zone-price-badge">БЕСПЛАТНО ОТ 1 000 000 UZS</span>
+              </div>
+              <p class="zone-districts">Мирабадский, Яккасарайский, Шайхантахурский, Юнусабадский, Мирзо-Улугбекский
+                районы, Ташкент Сити.</p>
+              <div class="zone-time-tag">✓ Время доставки: 60–90 минут (стандартный тариф до 1 млн: 30 000 UZS)</div>
+            </div>
+
+            <div class="zone-card" data-aos="fade-right" data-aos-duration="750" data-aos-delay="200">
+              <div class="zone-header">
+                <span class="zone-name">Зона 2: Расширенный Ташкент</span>
+                <span class="zone-price-badge">50 000 UZS (БЕСПЛАТНО ОТ 2 МЛН)</span>
+              </div>
+              <p class="zone-districts">Чиланзарский, Сергелийский, Яшнабадский, Учтепинский, Алмазарский, Бектемирский
+                районы.</p>
+              <div class="zone-time-tag">✓ Время доставки: 90–120 минут</div>
+            </div>
+
+            <div class="zone-card" data-aos="fade-right" data-aos-duration="750" data-aos-delay="300">
+              <div class="zone-header">
+                <span class="zone-name">Зона 3: Ташкентская область</span>
+                <span class="zone-price-badge">ОТ 120 000 UZS</span>
+              </div>
+              <p class="zone-districts">Кибрай, Чирчик, Янгиюль, Зангиата, Чарвак / Бостанлык (спецрейс с термобоксом).
+              </p>
+              <div class="zone-time-tag">✓ Доставка ко времени по предварительному согласованию</div>
+            </div>
+          </div>
+
+          <!-- Interactive Address Checker -->
+          <div class="address-check-card" data-aos="fade-left" data-aos-duration="850" data-aos-delay="200">
+            <h3>Проверить адрес доставки</h3>
+            <p>Введите улицу или район Ташкента для мгновенного расчета зоны и времени выезда курьера:</p>
+
+            <div class="address-input-wrap">
+              <input type="text" id="delivery-address-input" class="address-input"
+                placeholder="Например: ул. Нукус, Мирабад" />
+              <button id="delivery-check-btn" class="btn btn-primary btn-sm">ПРОВЕРИТЬ</button>
+            </div>
+
+            <div id="delivery-check-result" class="check-result-box"></div>
+
+            <div
+              style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--color-border); font-size: 0.75rem; color: var(--color-text-muted);">
+              <strong>Нужна доставка зная только номер телефона?</strong><br />
+              Наш деликатный консьерж сам позвонит получателю, вежливо уточнит удобный адрес и время вручения сюрприза.
+            </div>
+          </div>
+        </div>
+
+        <!-- Accepted Payment Methods -->
+        <div class="section-header" style="margin-bottom: 24px;" data-aos="fade-up" data-aos-duration="700">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">СПОСОБЫ ОПЛАТЫ</span>
+          <h2 class="section-title">Все удобные <span class="italic">способы</span> оплаты</h2>
+        </div>
+
+        <div class="payments-row" data-aos="fade-up" data-aos-duration="750">
+          <span class="payment-badge" data-aos="zoom-in" data-aos-delay="50">CLICK</span>
+          <span class="payment-badge" data-aos="zoom-in" data-aos-delay="100">PAYME</span>
+          <span class="payment-badge" data-aos="zoom-in" data-aos-delay="150">UZUM BANK</span>
+          <span class="payment-badge" data-aos="zoom-in" data-aos-delay="200">VISA</span>
+          <span class="payment-badge" data-aos="zoom-in" data-aos-delay="250">MASTERCARD</span>
+          <span class="payment-badge" data-aos="zoom-in" data-aos-delay="300">НАЛИЧНЫМИ КУРЬЕРУ</span>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="section-header" data-aos="fade-up" data-aos-duration="750">
+          <span class="kicker" data-aos="fade-down" data-aos-duration="600">ЧАСТЫЕ ВОПРОСЫ</span>
+          <h2 class="section-title">Ответы на ключевые <span class="italic">детали</span> доставки</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+            <div class="faq-item-header">
+              <h4 class="faq-item-title">Возможна ли доставка, зная только номер телефона получателя?</h4>
+              <span class="faq-item-icon">+</span>
+            </div>
+            <div class="faq-item-body">
+              <p>Да, конечно! Вам достаточно указать номер телефона получателя. Наш вежливый консьерж позвонит,
+                представится службой доставки и деликатно уточнит, в какое время и по какому адресу адресату будет
+                комфортно принять подарок, не раскрывая того, что именно будет доставлено.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" data-aos="fade-up" data-aos-duration="700" data-aos-delay="180">
+            <div class="faq-item-header">
+              <h4 class="faq-item-title">Как цветы переносят транспортировку в летнюю жару или зимний холод?</h4>
+              <span class="faq-item-icon">+</span>
+            </div>
+            <div class="faq-item-body">
+              <p>Каждый букет оснащается одноразовым аквапаком с питательным раствором Chrysal, защищающим стебли от
+                обезвоживания. Все наши автомобили оснащены климат-контролем с поддержкой оптимального режима +10°C ...
+                +14°C, поэтому букет прибывает в идеальном состоянии.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" data-aos="fade-up" data-aos-duration="700" data-aos-delay="260">
+            <div class="faq-item-header">
+              <h4 class="faq-item-title">Присылаете ли вы фото готового букета перед отправкой?</h4>
+              <span class="faq-item-icon">+</span>
+            </div>
+            <div class="faq-item-body">
+              <p>Обязательно. Сразу после того как ведущий флорист соберет букет, мы высылаем вам фото и короткое видео
+                высокого разрешения в Telegram или WhatsApp. Курьер выезжает только после вашего полного одобрения.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" data-aos="fade-up" data-aos-duration="700" data-aos-delay="340">
+            <div class="faq-item-header">
+              <h4 class="faq-item-title">Что если получателя не окажется по указанному адресу?</h4>
+              <span class="faq-item-icon">+</span>
+            </div>
+            <div class="faq-item-body">
+              <p>Курьер свяжется с вами или получателем. При необходимости букет может быть передан консьержу жилого
+                комплекса, коллегам или бесплатно переадресован в пределах центрального района.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" data-aos="fade-up" data-aos-duration="700" data-aos-delay="420">
+            <div class="faq-item-header">
+              <h4 class="faq-item-title">Как оформить анонимный заказ без указания имени?</h4>
+              <span class="faq-item-icon">+</span>
+            </div>
+            <div class="faq-item-body">
+              <p>При оформлении заказа отметьте «Анонимная доставка». Курьер не сообщит адресату, от кого цветы, и
+                передаст только конверт с вашей запиской и сургучной печатью.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       GLOBAL CART DRAWER
+       ======================================================================== -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title">Ваша корзина</h3>
+      <button class="close-btn" id="cart-drawer-close" aria-label="Закрыть корзину">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-drawer-body">
+      <div id="cart-empty-state" class="cart-empty-state" style="display: none;">
+        <div class="cart-empty-icon">❦</div>
+        <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 8px;">Корзина пока пуста</h4>
+        <p style="font-size: 0.8125rem; margin-bottom: 24px;">Выберите авторскую композицию или соберите королевский
+          букет роз в нашем каталоге.</p>
+        <button class="btn btn-primary btn-sm" onclick="closeCartDrawer(); navigateTo('catalog');">В КАТАЛОГ</button>
+      </div>
+
+      <div id="cart-items-container">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer" id="cart-drawer-footer">
+      <div class="promo-input-row">
+        <input type="text" id="cart-promo-input" class="promo-input" placeholder="Промокод (VIP2026)" />
+        <button id="cart-promo-apply-btn" class="btn btn-secondary btn-sm">ПРИМЕНИТЬ</button>
+      </div>
+
+      <div class="cart-totals">
+        <div style="display: flex; justify-content: space-between; color: var(--color-text-body);">
+          <span>Сумма заказа:</span>
+          <span id="cart-subtotal-price">0 UZS</span>
+        </div>
+        <div id="cart-discount-row"
+          style="display: none; justify-content: space-between; color: #2e7d32; font-weight: 600;">
+          <span>Привилегия VIP:</span>
+          <span id="cart-discount-value">-0 UZS</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; color: #2e7d32; font-size: 0.75rem;">
+          <span>Доставка по Ташкенту:</span>
+          <span>Бесплатно (от 1 млн)</span>
+        </div>
+        <div class="cart-total-final">
+          <span>Итого:</span>
+          <span id="cart-total-price">0 UZS</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-lg" style="width: 100%;" onclick="openCheckoutModal()">
+        ОФОРМИТЬ ДОСТАВКУ
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODALS: QUICK VIEW, FAST ORDER, CHECKOUT
+       ======================================================================== -->
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modal-overlay"></div>
+
+  <!-- Quick View Modal -->
+  <div class="modal quickview-modal" id="quick-view-modal">
+    <button class="close-btn" style="position: absolute; top: 16px; right: 16px; z-index: 10;"
+      onclick="closeQuickView()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+    <div id="quick-view-content"></div>
+  </div>
+
+  <!-- 1-Click Fast Order Modal -->
+  <div class="modal form-modal" id="fast-order-modal">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Заказ в 1 клик</h3>
+      <button class="close-btn" onclick="closeFastOrderModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="fast-order-product-preview" class="fast-order-product-preview"></div>
+
+    <form id="fast-order-form">
+      <div class="form-group">
+        <label class="form-label" for="fast-order-name">Ваше имя</label>
+        <input type="text" id="fast-order-name" class="form-control" placeholder="Алишер" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="fast-order-phone">Номер телефона (Ташкент)</label>
+        <input type="tel" id="fast-order-phone" class="form-control" value="+998 " required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="fast-order-address">Адрес доставки в Ташкенте</label>
+        <input type="text" id="fast-order-address" class="form-control" placeholder="ул. Амира Темура, 14, кв. 25"
+          required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="fast-order-note">Текст для открытки с сургучной печатью (бесплатно)</label>
+        <textarea id="fast-order-note" class="form-control" rows="2"
+          placeholder="С днем рождения, дорогая! Пусть каждый день будет наполнен светом..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 10px;">
+        ПОДТВЕРДИТЬ ЗАКАЗ
+      </button>
+
+      <div style="font-size: 0.6875rem; color: var(--color-text-muted); text-align: center; margin-top: 12px;">
+        Консьерж перезвонит в течение 5 минут для уточнения деталей
+      </div>
+    </form>
+  </div>
+
+  <!-- Full Checkout Modal -->
+  <div class="modal form-modal" id="checkout-modal">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Оформление доставки</h3>
+      <button class="close-btn" onclick="closeCheckoutModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="checkout-order-summary" style="margin-bottom: 20px;"></div>
+
+    <form id="checkout-form">
+      <div class="form-group">
+        <label class="form-label" for="checkout-name">Ваше имя</label>
+        <input type="text" id="checkout-name" class="form-control" placeholder="Имя заказчика" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="checkout-phone">Номер телефона</label>
+        <input type="tel" id="checkout-phone" class="form-control" value="+998 " required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="checkout-recipient-phone">Телефон получателя (если сюрприз)</label>
+        <input type="tel" id="checkout-recipient-phone" class="form-control" placeholder="+998 " />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="checkout-address">Адрес доставки в Ташкенте</label>
+        <input type="text" id="checkout-address" class="form-control" placeholder="Район, улица, дом, квартира"
+          required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="checkout-time">Желаемое время доставки</label>
+        <select id="checkout-time" class="form-control">
+          <option>Как можно скорее (60-90 минут)</option>
+          <option>Сегодня: 14:00 - 16:00</option>
+          <option>Сегодня: 17:00 - 19:00</option>
+          <option>Сегодня: 20:00 - 22:00</option>
+          <option>Завтра утром (09:00 - 11:00)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="checkout-payment">Способ оплаты</label>
+        <select id="checkout-payment" class="form-control">
+          <option>Click / Payme (Онлайн)</option>
+          <option>Uzum Bank</option>
+          <option>Visa / Mastercard</option>
+          <option>Наличными курьеру при получении</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="checkout-letter">Текст для фирменной открытки с сургучом</label>
+        <textarea id="checkout-letter" class="form-control" rows="2" placeholder="Напишите теплые слова..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 10px;">
+        ЗАВЕРШИТЬ ОФОРМЛЕНИЕ
+      </button>
+    </form>
+  </div>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand" data-aos="fade-up" data-aos-duration="750" data-aos-delay="100">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+          <img src="assets/images/logo.png" alt="PG"
+            style="width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(212, 175, 55, 0.6); box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);">
+          <div class="brand-name" style="color: #fff; font-size: 1.25rem;">Prestige Gallery</div>
+        </div>
+        <div class="brand-tagline" style="color: var(--color-gold-light);">FLORAL HAUTE HORLOGERIE & ATELIER · TASHKENT
+        </div>
+        <p>
+          Флагманский дом авторской флористики в Ташкенте. Прямые поставки премиальных роз из Эквадора и Нидерландов,
+          дипломатический этикет и доставка курьером в белых перчатках.
+        </p>
+        <div style="font-size: 0.8125rem; color: #dedbde; line-height: 1.8;">
+          <div>📍 Ташкент, Мирабадский район, ул. Амира Темура, 28/1</div>
+          <div>📞 +998 (71) 200-00-88 · +998 (90) 000-00-88</div>
+          <div>✉️ atelier@prestigegallery.uz</div>
+        </div>
+      </div>
+
+      <div data-aos="fade-up" data-aos-duration="750" data-aos-delay="200">
+        <h4 class="footer-title">Коллекции</h4>
+        <ul class="footer-links">
+          <li><a href="#catalog" onclick="filterCatalogBy('savatlar')">Королевские корзины (Саватлар)</a></li>
+          <li><a href="#catalog" onclick="navigateTo('catalog')">Авторские букеты</a></li>
+          <li><a href="#roses" onclick="navigateTo('roses')">Королевские розы 101</a></li>
+          <li><a href="#roses" onclick="navigateTo('roses')">Конструктор роз</a></li>
+          <li><a href="#catalog" onclick="navigateTo('catalog')">Шляпные коробки</a></li>
+          <li><a href="#catalog" onclick="navigateTo('catalog')">Облачные гортензии</a></li>
+        </ul>
+      </div>
+
+      <div data-aos="fade-up" data-aos-duration="750" data-aos-delay="300">
+        <h4 class="footer-title">Сервис</h4>
+        <ul class="footer-links">
+          <li><a href="#delivery" onclick="navigateTo('delivery')">Доставка по Ташкенту</a></li>
+          <li><a href="#delivery" onclick="navigateTo('delivery')">Курьер в белых перчатках</a></li>
+          <li><a href="#delivery" onclick="navigateTo('delivery')">Сургучная печать и каллиграфия</a></li>
+          <li><a href="#delivery" onclick="navigateTo('delivery')">Корпоративное обслуживание</a></li>
+          <li><a href="#delivery" onclick="navigateTo('delivery')">Протокольные мероприятия</a></li>
+        </ul>
+      </div>
+
+      <div data-aos="fade-up" data-aos-duration="750" data-aos-delay="400">
+        <h4 class="footer-title">О доме</h4>
+        <ul class="footer-links">
+          <li><a href="#home" onclick="navigateTo('home')">История ателье</a></li>
+          <li><a href="#home" onclick="navigateTo('home')">Плантации Эквадора</a></li>
+          <li><a href="#home" onclick="navigateTo('home')">Гарантия свежести</a></li>
+          <li><a href="https://instagram.com" target="_blank">Instagram: @prestige.flowers</a></li>
+          <li><a href="https://t.me" target="_blank">Telegram Concierge</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 Prestige Gallery Tashkent. Floral Haute Horlogerie. Все права защищены.</div>
+      <div style="display: flex; gap: 24px;">
+        <a href="#home">Конфиденциальность</a>
+        <a href="#delivery">Условия доставки</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/aos.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/builder.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
