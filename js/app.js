@@ -883,7 +883,198 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast(`Язык переключен: ${lang.toUpperCase()}`, 'info');
     });
   });
+
+  // Initialize Prestige Luxury Intro & Welcome Animation
+  initPrestigeIntroAnimation();
 });
+
+// ==========================================================================
+// PRESTIGE LUXURY INTRO & WELCOME ANIMATION CONTROLLER
+// ==========================================================================
+function initPrestigeIntroAnimation() {
+  const overlay = document.getElementById('prestige-intro-overlay');
+  if (!overlay) return;
+
+  const loaderPhase = document.getElementById('intro-loader-phase');
+  const welcomePhase = document.getElementById('intro-welcome-phase');
+  const counterVal = document.getElementById('intro-counter-val');
+  const progressFill = document.getElementById('intro-progress-fill');
+  const statusText = document.getElementById('intro-status-text');
+  const skipBtn = document.getElementById('intro-skip-btn');
+  const enterBtn = document.getElementById('intro-enter-btn');
+  const cardTrigger = document.getElementById('welcome-card-click-trigger');
+  const timerLine = document.getElementById('welcome-timer-line');
+
+  let currentPercent = 0;
+  let isClosed = false;
+  let autoEnterTimer = null;
+  let timerInterval = null;
+
+  // Lock body scroll during intro
+  document.body.classList.add('intro-active');
+
+  function closeIntro() {
+    if (isClosed) return;
+    isClosed = true;
+
+    if (autoEnterTimer) clearTimeout(autoEnterTimer);
+    if (timerInterval) clearInterval(timerInterval);
+
+    overlay.classList.add('intro-completed');
+    document.body.classList.remove('intro-active');
+
+    // Trigger AOS animations for page elements
+    if (window.AOS) {
+      setTimeout(() => window.AOS.refresh(), 100);
+    }
+
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 900);
+  }
+
+  function startWelcomePhase() {
+    if (isClosed) return;
+
+    // Transition out loader phase
+    if (loaderPhase) loaderPhase.classList.add('phase-exit');
+
+    // Transition in welcome phase
+    setTimeout(() => {
+      if (isClosed) return;
+      if (welcomePhase) welcomePhase.classList.add('phase-active');
+
+      // Animate progress line over 3.2 seconds
+      const autoDismissDuration = 3200; // 3.2 seconds
+      const startTime = Date.now();
+
+      timerInterval = setInterval(() => {
+        if (isClosed) {
+          clearInterval(timerInterval);
+          return;
+        }
+        const elapsed = Date.now() - startTime;
+        const pct = Math.min(100, (elapsed / autoDismissDuration) * 100);
+        if (timerLine) timerLine.style.width = pct + '%';
+        if (pct >= 100) {
+          clearInterval(timerInterval);
+        }
+      }, 30);
+
+      autoEnterTimer = setTimeout(() => {
+        closeIntro();
+      }, autoDismissDuration);
+    }, 400);
+  }
+
+  // Event Listeners for smooth close
+  if (skipBtn) {
+    skipBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeIntro();
+    });
+  }
+  if (enterBtn) {
+    enterBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeIntro();
+    });
+  }
+  if (cardTrigger) {
+    cardTrigger.addEventListener('click', () => {
+      closeIntro();
+    });
+  }
+  overlay.addEventListener('click', (e) => {
+    // If welcome phase is active and user clicked anywhere on overlay, close
+    if (welcomePhase && welcomePhase.classList.contains('phase-active')) {
+      closeIntro();
+    }
+  });
+
+  // Keyboard accessibility (ESC or Space/Enter to enter)
+  window.addEventListener('keydown', (e) => {
+    if (!isClosed && (e.key === 'Escape' || e.key === 'Enter')) {
+      closeIntro();
+    }
+  });
+
+  // Status updates matching milestones
+  const statusMessages = [
+    { at: 0, text: 'Инициализация коллекции Prestige...' },
+    { at: 35, text: 'Загрузка шедевров флористики...' },
+    { at: 70, text: 'Подготовка персонального приветствия...' },
+    { at: 96, text: 'Добро пожаловать в Prestige Gallery!' }
+  ];
+
+  // Number Counter Animation using requestAnimationFrame with easeOut
+  const duration = 1800; // 1.8 seconds for smooth loading
+  const startTimestamp = performance.now();
+
+  function updateLoader(timestamp) {
+    if (isClosed) return;
+
+    const elapsed = timestamp - startTimestamp;
+    const progress = Math.min(1, elapsed / duration);
+
+    // Smooth cubic ease out
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    currentPercent = Math.round(easeOut * 100);
+
+    if (counterVal) counterVal.textContent = currentPercent;
+    if (progressFill) progressFill.style.width = currentPercent + '%';
+
+    // Update status message
+    for (let i = statusMessages.length - 1; i >= 0; i--) {
+      if (currentPercent >= statusMessages[i].at) {
+        if (statusText && statusText.textContent !== statusMessages[i].text) {
+          statusText.textContent = statusMessages[i].text;
+        }
+        break;
+      }
+    }
+
+    if (progress < 1) {
+      requestAnimationFrame(updateLoader);
+    } else {
+      // Hit 100%
+      if (counterVal) counterVal.textContent = '100';
+      if (progressFill) {
+        progressFill.style.width = '100%';
+        progressFill.classList.add('fill-completed');
+      }
+      if (statusText) {
+        statusText.textContent = 'Добро пожаловать в Prestige Gallery!';
+      }
+
+      setTimeout(() => {
+        if (welcomePhase) {
+          startWelcomePhase();
+        } else {
+          closeIntro();
+        }
+      }, 480);
+    }
+  }
+
+  requestAnimationFrame(updateLoader);
+
+  // Global helper to replay intro for testing/demo
+  window.replayPrestigeIntro = function () {
+    isClosed = false;
+    overlay.style.display = 'flex';
+    overlay.classList.remove('intro-completed');
+    if (welcomePhase) welcomePhase.classList.remove('phase-active');
+    if (loaderPhase) loaderPhase.classList.remove('phase-exit');
+    if (progressFill) {
+      progressFill.style.width = '0%';
+      progressFill.classList.remove('fill-completed');
+    }
+    if (counterVal) counterVal.textContent = '0';
+    if (timerLine) timerLine.style.width = '0%';
+    initPrestigeIntroAnimation();
+  };
+}
 
 // Expose globals
 window.openQuickView = openQuickView;
@@ -899,3 +1090,5 @@ window.showToast = showToast;
 window.toggleFavorite = toggleFavorite;
 window.renderHomeSavatlar = renderHomeSavatlar;
 window.filterCatalogBy = filterCatalogBy;
+window.initPrestigeIntroAnimation = initPrestigeIntroAnimation;
+

@@ -2307,3 +2307,601 @@
   max-width: 600px;
 }
 
+/* ==========================================================================
+   PRESTIGE LUXURY INTRO & WELCOME ANIMATION STYLES
+   ========================================================================== */
+
+body.intro-active {
+  overflow: hidden !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  touch-action: none;
+}
+
+.prestige-intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 9999999;
+  background: radial-gradient(circle at 50% 50%, #151420 0%, #0a0a0f 60%, #050508 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.85s;
+}
+
+.prestige-intro-overlay.intro-completed {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.04);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* Ambient glow accents */
+.intro-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  z-index: 1;
+}
+
+.intro-glow-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.16) 0%, transparent 70%);
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: introGlowFloat 6s ease-in-out infinite alternate;
+}
+
+.intro-glow-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(232, 204, 136, 0.1) 0%, transparent 70%);
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes introGlowFloat {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -46%) scale(1.15); opacity: 1; }
+}
+
+/* Skip Button */
+.intro-skip-btn {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--color-gold-light);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.intro-skip-btn:hover {
+  background: rgba(212, 175, 55, 0.18);
+  border-color: var(--color-gold);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.intro-skip-btn .skip-icon {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* Common Phase styles */
+.intro-phase {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.6s;
+}
+
+/* Phase 1: Loader */
+.intro-loader-phase {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.intro-loader-phase.phase-exit {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+
+.intro-brand-badge {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 18px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, #0d0c13 75%);
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.28);
+  animation: introBadgePulse 2.6s ease-in-out infinite;
+}
+
+.intro-badge-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
+}
+
+.intro-monogram {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro-badge-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(212, 175, 55, 0.35);
+  animation: introRingRotate 18s linear infinite;
+}
+
+@keyframes introRingRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes introBadgePulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.2); transform: scale(1); }
+  50% { box-shadow: 0 0 45px rgba(212, 175, 55, 0.45); transform: scale(1.03); }
+}
+
+.intro-brand-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.6vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.intro-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: rgba(232, 204, 136, 0.8);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   THE STRIPED PILL PROGRESS BAR (Matching User Reference Image & Prestige Aesthetic)
+   ========================================================================== */
+.intro-progress-bar-wrap {
+  width: clamp(280px, 86vw, 440px);
+  height: 20px;
+  background: #0e0d15;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 
+    inset 0 2px 6px rgba(0, 0, 0, 0.85),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.06),
+    0 0 30px rgba(212, 175, 55, 0.16);
+  position: relative;
+  overflow: hidden;
+  padding: 2.5px;
+  margin: 0 auto;
+}
+
+.intro-progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 9999px;
+  position: relative;
+  transition: width 0.08s linear;
+  /* Top 3D glass highlight + diagonal candy/barber stripes in Royal Gold */
+  background-color: #d4af37;
+  background-image: 
+    /* Top specular highlight gloss reflection */
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.52) 0%,
+      rgba(255, 255, 255, 0.15) 45%,
+      rgba(0, 0, 0, 0.12) 55%,
+      rgba(0, 0, 0, 0.28) 100%
+    ),
+    /* Diagonal Barber-pole / Candy Cane Stripes */
+    repeating-linear-gradient(
+      -45deg,
+      #fdf0b5 0px,
+      #fdf0b5 12px,
+      #e5c267 12px,
+      #e5c267 22px,
+      #c5a059 22px,
+      #c5a059 32px,
+      #9a7722 32px,
+      #9a7722 42px
+    );
+  background-size: 100% 100%, 42px 100%;
+  box-shadow: 
+    0 0 16px rgba(212, 175, 55, 0.7),
+    0 0 32px rgba(212, 175, 55, 0.3);
+  animation: prestigeBarberStripes 1.1s linear infinite;
+}
+
+@keyframes prestigeBarberStripes {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 0, 42px 0;
+  }
+}
+
+/* Glowing leading edge bead */
+.intro-progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.85) 0%, rgba(245, 226, 163, 0.4) 60%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Completion flash */
+.intro-progress-bar-fill.fill-completed {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.85), 0 0 50px rgba(212, 175, 55, 0.85);
+  filter: brightness(1.15);
+}
+
+/* ==========================================================================
+   CENTERED PERCENTAGE COUNTER DIRECTLY BELOW THE BAR (Matching User Reference)
+   ========================================================================== */
+.intro-counter-box {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-top: 20px;
+  line-height: 1;
+}
+
+.intro-counter-num {
+  font-family: var(--font-sans);
+  font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-gold-light);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 18px rgba(212, 175, 55, 0.45);
+}
+
+.intro-counter-pct {
+  font-family: var(--font-sans);
+  font-size: clamp(1.15rem, 3.2vw, 1.55rem);
+  font-weight: 600;
+  color: var(--color-gold-bright);
+  margin-left: 6px;
+  opacity: 0.92;
+  text-shadow: 0 0 14px rgba(212, 175, 55, 0.4);
+}
+
+/* Status Milestone Feedback */
+.intro-status-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.intro-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 8px var(--color-gold);
+  animation: introDotPulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes introDotPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+.intro-status-text {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+/* Phase 2: Welcome Banner Screen */
+.intro-welcome-phase {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.94);
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.8s;
+}
+
+.intro-welcome-phase.phase-active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.welcome-card-wrapper {
+  max-width: 860px;
+  width: 90vw;
+  background: #0f0e15;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(212, 175, 55, 0.22);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.welcome-card-wrapper:hover {
+  transform: translateY(-2px) scale(1.008);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.95), 0 0 80px rgba(212, 175, 55, 0.32);
+}
+
+.welcome-banner-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f7f4ee;
+  overflow: hidden;
+}
+
+.welcome-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: bannerKenBurns 8s ease-out forwards;
+}
+
+@keyframes bannerKenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+/* Light shimmer sweep across the banner */
+.welcome-banner-shimmer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(212, 175, 55, 0.2) 58%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: bannerShimmerSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes bannerShimmerSweep {
+  0% { transform: translateX(-120%); }
+  45%, 100% { transform: translateX(120%); }
+}
+
+.welcome-footer-bar {
+  padding: 22px 28px;
+  background: linear-gradient(180deg, #13121b 0%, #0d0c13 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.welcome-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.welcome-subtag {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--color-gold-bright);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.welcome-headline {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 500;
+}
+
+.welcome-enter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold-gradient);
+  color: #07070a;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+  transition: all 0.3s ease;
+  animation: enterBtnPulse 2.4s ease-in-out infinite;
+}
+
+.welcome-enter-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 28px rgba(212, 175, 55, 0.55);
+}
+
+@keyframes enterBtnPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35); }
+  50% { box-shadow: 0 6px 30px rgba(212, 175, 55, 0.6); }
+}
+
+/* Auto-enter timer line */
+.welcome-timer-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--gold-gradient);
+  box-shadow: 0 0 10px #f5e2a3;
+  transition: width 0.05s linear;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .welcome-card-wrapper {
+    width: 94vw;
+    border-radius: 14px;
+  }
+
+  .welcome-footer-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 18px;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .welcome-text-group {
+    align-items: center;
+  }
+
+  .welcome-headline {
+    font-size: 0.95rem;
+  }
+
+  .welcome-enter-btn {
+    justify-content: center;
+    width: 100%;
+    padding: 11px 20px;
+    font-size: 0.75rem;
+  }
+
+  .intro-skip-btn {
+    top: 16px;
+    right: 16px;
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+
+  .intro-brand-badge {
+    width: 66px;
+    height: 66px;
+    margin-bottom: 14px;
+  }
+
+  .intro-badge-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .intro-brand-title {
+    font-size: 1.3rem;
+    letter-spacing: 0.14em;
+  }
+
+  .intro-kicker {
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 22px;
+  }
+
+  .intro-progress-bar-wrap {
+    width: 88vw;
+    height: 18px;
+  }
+
+  .intro-counter-box {
+    margin-top: 16px;
+  }
+
+  .intro-status-text {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+

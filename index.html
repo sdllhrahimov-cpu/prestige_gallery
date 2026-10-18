@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prestige Gallery — Floral Haute Horlogerie & Atelier · Tashkent</title>
+  <title>Prestige Gallery</title>
   <meta name="description"
     content="Премиальный флористический дом в Ташкенте. Авторские букеты, королевские розы из Эквадора, доставка курьером в белых перчатках от 60 минут.">
 
@@ -21,6 +21,74 @@
 </head>
 
 <body>
+
+  <!-- ==========================================================================
+       PRESTIGE LUXURY INTRO & WELCOME ANIMATION OVERLAY
+       ========================================================================== -->
+  <aside id="prestige-intro-overlay" class="prestige-intro-overlay" aria-label="Prestige Gallery Intro">
+    <!-- Ambient glowing light spots -->
+    <div class="intro-ambient-glow intro-glow-1"></div>
+    <div class="intro-ambient-glow intro-glow-2"></div>
+
+    <!-- Quick Skip Button -->
+    <button id="intro-skip-btn" class="intro-skip-btn" type="button" aria-label="Пропустить заставку">
+      <span>Пропустить</span>
+      <span class="skip-icon">✕</span>
+    </button>
+
+    <!-- Phase 1: Percentage Loading Screen (Matching Reference Design & Prestige Luxury Identity) -->
+    <div id="intro-loader-phase" class="intro-phase intro-loader-phase">
+      <div class="intro-brand-badge">
+        <img src="assets/images/logo.png" alt="Prestige Gallery Crest" class="intro-badge-logo" />
+        <div class="intro-badge-ring"></div>
+      </div>
+
+      <h1 class="intro-brand-title">Prestige Gallery</h1>
+      <div class="intro-kicker">Floral Haute Horlogerie & Atelier · Tashkent</div>
+
+      <!-- The Pill-Shaped Striped Progress Bar (Directly Matching the User's Reference) -->
+      <div class="intro-progress-bar-wrap" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div id="intro-progress-fill" class="intro-progress-bar-fill"></div>
+      </div>
+
+      <!-- Centered Percentage Below the Bar (e.g., 53 %, Matching the Reference) -->
+      <div class="intro-counter-box">
+        <span id="intro-counter-val" class="intro-counter-num">0</span>
+        <span class="intro-counter-pct"> %</span>
+      </div>
+
+      <!-- Subtle Status Milestone -->
+      <div class="intro-status-wrap">
+        <span class="intro-status-dot"></span>
+        <div id="intro-status-text" class="intro-status-text">Инициализация коллекции Prestige...</div>
+      </div>
+    </div>
+
+    <!-- Phase 2: Welcome to Prestige Gallery Banner Screen -->
+    <div id="intro-welcome-phase" class="intro-phase intro-welcome-phase">
+      <div class="welcome-card-wrapper" id="welcome-card-click-trigger">
+        <div class="welcome-banner-media">
+          <img src="assets/images/welcome_banner.jpg" alt="Welcome to Prestige Gallery" class="welcome-banner-image" id="welcome-banner-img" />
+          <div class="welcome-banner-shimmer"></div>
+        </div>
+
+        <div class="welcome-footer-bar">
+          <div class="welcome-text-group">
+            <span class="welcome-subtag">EXCLUSIVE FLORAL EXPERIENCE · TASHKENT</span>
+            <p class="welcome-headline">Добро пожаловать в мир флористического искусства</p>
+          </div>
+          <button id="intro-enter-btn" class="welcome-enter-btn" type="button">
+            <span>ВОЙТИ В ГАЛЕРЕЮ</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="welcome-timer-line" id="welcome-timer-line"></div>
+      </div>
+    </div>
+  </aside>
 
   <!-- Main Navigation Header (Floating Pill - Inspired by fl1.jpg) -->
   <header class="main-header">
