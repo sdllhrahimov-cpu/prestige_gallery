@@ -464,13 +464,16 @@ function renderCatalog(filter = 'all', sort = 'popular') {
   if (window.AOS) {
     setTimeout(() => window.AOS.refresh(), 50);
   }
+  if (window.initDragScroll) {
+    setTimeout(window.initDragScroll, 60);
+  }
 }
 
 function renderHomeBestsellers() {
   const container = document.getElementById('home-bestsellers-grid');
   if (!container) return;
 
-  const bestsellers = PRODUCTS_DATA.filter(p => p.isBestseller).slice(0, 4);
+  const bestsellers = PRODUCTS_DATA.filter(p => p.isBestseller).slice(0, 12);
 
   container.innerHTML = bestsellers.map((product, index) => `
     <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="800" data-aos-delay="${index * 120 + 80}">
@@ -506,6 +509,9 @@ function renderHomeBestsellers() {
 
   if (window.AOS) {
     setTimeout(() => window.AOS.refresh(), 50);
+  }
+  if (window.initDragScroll) {
+    setTimeout(window.initDragScroll, 60);
   }
 }
 
@@ -550,6 +556,9 @@ function renderHomeSavatlar() {
 
   if (window.AOS) {
     setTimeout(() => window.AOS.refresh(), 50);
+  }
+  if (window.initDragScroll) {
+    setTimeout(window.initDragScroll, 60);
   }
 }
 
@@ -684,11 +693,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Horizontal drag-to-scroll helper for products-grid
+  function initDragScroll() {
+    document.querySelectorAll('.products-grid').forEach(slider => {
+      if (!slider || slider.dataset.dragInit) return;
+      slider.dataset.dragInit = 'true';
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      slider.addEventListener('mousedown', (e) => {
+        if (e.target.closest('button') || e.target.closest('a')) return;
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+        slider.style.userSelect = 'none';
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDown) {
+          isDown = false;
+          slider.style.cursor = '';
+          slider.style.userSelect = '';
+        }
+      });
+
+      slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1.4;
+        slider.scrollLeft = scrollLeft - walk;
+      });
+    });
+  }
+  window.initDragScroll = initDragScroll;
+
   // Render initial products
   renderHomeBestsellers();
   renderHomeSavatlar();
   renderCatalog('all', 'popular');
   renderRosesMonobouquets();
+  setTimeout(initDragScroll, 80);
 
   // Initialize Grand Rose Builder
   if (document.getElementById('rose-builder-wrapper')) {

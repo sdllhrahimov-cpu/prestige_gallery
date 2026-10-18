@@ -290,7 +290,7 @@ const PRODUCTS_DATA = [
     diameter: '70 см',
     packaging: 'Эксклюзивная корзина ручного плетения, аква-резервуар, открытка PG с сургучной печатью',
     deliveryTime: 'от 90 минут',
-    isBestseller: false,
+    isBestseller: true,
     rating: 5.0,
     reviewsCount: 19
   },
