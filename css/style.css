@@ -646,6 +646,7 @@ button {
 
   .hero-actions .btn {
     width: 100%;
+    justify-content: center;
   }
 }
 
