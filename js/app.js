@@ -430,7 +430,7 @@ function renderCatalog(filter = 'all', sort = 'popular') {
   }
 
   grid.innerHTML = filtered.map((product, index) => `
-    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="350" data-aos-delay="${(index % 4) * 40}">
+    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="580" data-aos-delay="${(index % 4) * 60}">
       <div class="product-card-media" onclick="openQuickView('${product.id}')">
         <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" decoding="async" />
         <span class="product-badge badge-${product.badgeType}">${product.badge}</span>
@@ -476,7 +476,7 @@ function renderHomeBestsellers() {
   const bestsellers = PRODUCTS_DATA.filter(p => p.isBestseller).slice(0, 12);
 
   container.innerHTML = bestsellers.map((product, index) => `
-    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="350" data-aos-delay="${(index % 4) * 40}">
+    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="580" data-aos-delay="${(index % 4) * 60}">
       <div class="product-card-media" onclick="openQuickView('${product.id}')">
         <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" decoding="async" />
         <span class="product-badge badge-${product.badgeType}">${product.badge}</span>
@@ -523,7 +523,7 @@ function renderHomeSavatlar() {
   const savatlarList = PRODUCTS_DATA.filter(p => p.category === 'savatlar');
 
   container.innerHTML = savatlarList.map((product, index) => `
-    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="350" data-aos-delay="${(index % 3) * 40}">
+    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="580" data-aos-delay="${(index % 3) * 60}">
       <div class="product-card-media" onclick="openQuickView('${product.id}')">
         <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" decoding="async" />
         <span class="product-badge badge-${product.badgeType}">${product.badge}</span>
@@ -583,7 +583,7 @@ function renderRosesMonobouquets() {
   const rosesList = PRODUCTS_DATA.filter(p => p.category === 'roses' || p.category === 'boxes' || p.title.includes('Rose') || p.title.includes('Hatbox'));
 
   container.innerHTML = rosesList.map((product, index) => `
-    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="350" data-aos-delay="${(index % 3) * 40}">
+    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="580" data-aos-delay="${(index % 3) * 60}">
       <div class="product-card-media" onclick="openQuickView('${product.id}')">
         <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" decoding="async" />
         <span class="product-badge badge-${product.badgeType}">${product.badge}</span>
@@ -731,11 +731,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize AOS (Animate On Scroll)
   if (window.AOS) {
     window.AOS.init({
-      duration: 350,
+      duration: 580,
       easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
       once: true,
       mirror: false,
-      offset: 20
+      offset: 35
     });
   }
 

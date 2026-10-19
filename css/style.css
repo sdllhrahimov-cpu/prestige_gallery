@@ -916,7 +916,7 @@ html[data-theme="dark"] .theme-switch-thumb {
 }
 
 /* ==========================================================================
-   Creative Scroll Effects & AOS Enhancements
+   Creative Scroll Effects & AOS Enhancements (Luxury Editorial Suite)
    ========================================================================== */
 [data-aos] {
   pointer-events: auto !important;
@@ -929,93 +929,113 @@ body[data-aos-easing="cubic-bezier(0.16, 1, 0.3, 1)"] [data-aos],
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* Subtle luxury scale & blur enhancements */
+/* Luxury 3D Scale & Optical Blur Reveal */
 [data-aos="zoom-in"] {
-  transform: scale(0.92);
+  transform: perspective(1000px) scale(0.88) translateY(28px);
   opacity: 0;
-  transition-property: transform, opacity;
+  filter: blur(8px);
+  transition-property: transform, opacity, filter;
 }
 [data-aos="zoom-in"].aos-animate {
-  transform: scale(1);
+  transform: perspective(1000px) scale(1) translateY(0);
   opacity: 1;
+  filter: blur(0);
 }
 
 [data-aos="zoom-in-up"] {
-  transform: translate3d(0, 36px, 0) scale(0.94);
+  transform: perspective(1200px) translate3d(0, 48px, 0) scale(0.92);
   opacity: 0;
-  transition-property: transform, opacity;
+  filter: blur(8px);
+  transition-property: transform, opacity, filter;
 }
 [data-aos="zoom-in-up"].aos-animate {
-  transform: translate3d(0, 0, 0) scale(1);
+  transform: perspective(1200px) translate3d(0, 0, 0) scale(1);
   opacity: 1;
+  filter: blur(0);
 }
 
 [data-aos="fade-up-right"] {
-  transform: translate3d(-35px, 35px, 0);
+  transform: perspective(1200px) translate3d(-42px, 42px, 0) rotateY(-8deg) scale(0.94);
   opacity: 0;
-  transition-property: transform, opacity;
+  filter: blur(8px);
+  transition-property: transform, opacity, filter;
 }
 [data-aos="fade-up-right"].aos-animate {
-  transform: translate3d(0, 0, 0);
+  transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0deg) scale(1);
   opacity: 1;
+  filter: blur(0);
 }
 
 [data-aos="fade-up-left"] {
-  transform: translate3d(35px, 35px, 0);
+  transform: perspective(1200px) translate3d(42px, 42px, 0) rotateY(8deg) scale(0.94);
   opacity: 0;
-  transition-property: transform, opacity;
+  filter: blur(8px);
+  transition-property: transform, opacity, filter;
 }
 [data-aos="fade-up-left"].aos-animate {
-  transform: translate3d(0, 0, 0);
+  transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0deg) scale(1);
   opacity: 1;
+  filter: blur(0);
 }
 
 [data-aos="fade-down"] {
-  transform: translate3d(0, -28px, 0);
+  transform: perspective(1000px) translate3d(0, -32px, 0) scale(0.96);
   opacity: 0;
-  transition-property: transform, opacity;
+  filter: blur(6px);
+  letter-spacing: 0.28em;
+  transition-property: transform, opacity, filter, letter-spacing;
 }
 [data-aos="fade-down"].aos-animate {
-  transform: translate3d(0, 0, 0);
+  transform: perspective(1000px) translate3d(0, 0, 0) scale(1);
   opacity: 1;
+  filter: blur(0);
+  letter-spacing: inherit;
 }
 
 [data-aos="fade-up"] {
-  transform: translate3d(0, 32px, 0);
+  transform: perspective(1200px) translate3d(0, 42px, 0) scale(0.95);
   opacity: 0;
-  transition-property: transform, opacity;
+  filter: blur(6px);
+  transition-property: transform, opacity, filter;
 }
 [data-aos="fade-up"].aos-animate {
-  transform: translate3d(0, 0, 0);
+  transform: perspective(1200px) translate3d(0, 0, 0) scale(1);
   opacity: 1;
+  filter: blur(0);
 }
 
 [data-aos="fade-left"] {
-  transform: translate3d(40px, 0, 0);
+  transform: perspective(1200px) translate3d(50px, 0, 0) rotateY(6deg) scale(0.96);
   opacity: 0;
-  transition-property: transform, opacity;
+  filter: blur(8px);
+  transition-property: transform, opacity, filter;
 }
 [data-aos="fade-left"].aos-animate {
-  transform: translate3d(0, 0, 0);
+  transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0deg) scale(1);
   opacity: 1;
+  filter: blur(0);
 }
 
 [data-aos="fade-right"] {
-  transform: translate3d(-40px, 0, 0);
+  transform: perspective(1200px) translate3d(-50px, 0, 0) rotateY(-6deg) scale(0.96);
   opacity: 0;
-  transition-property: transform, opacity;
+  filter: blur(8px);
+  transition-property: transform, opacity, filter;
 }
 [data-aos="fade-right"].aos-animate {
-  transform: translate3d(0, 0, 0);
+  transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0deg) scale(1);
   opacity: 1;
+  filter: blur(0);
 }
 
 [data-aos="flip-up"] {
-  transform: perspective(1200px) rotateX(12deg) translateY(24px);
+  transform: perspective(1400px) rotateX(18deg) translateY(40px) scale(0.93);
   opacity: 0;
-  transition-property: transform, opacity;
+  filter: blur(8px);
+  transition-property: transform, opacity, filter;
 }
 [data-aos="flip-up"].aos-animate {
-  transform: perspective(1200px) rotateX(0deg) translateY(0);
+  transform: perspective(1400px) rotateX(0deg) translateY(0) scale(1);
   opacity: 1;
+  filter: blur(0);
 }

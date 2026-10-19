@@ -340,6 +340,7 @@ html[data-theme="dark"] .hero-bg-watermark {
 }
 
 .product-card {
+  position: relative;
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -350,15 +351,66 @@ html[data-theme="dark"] .hero-bg-watermark {
   box-shadow: var(--shadow-card);
 }
 
-/* Hardware accelerated scroll reveal for product cards */
-.product-card[data-aos] {
-  will-change: transform, opacity;
+/* Luxury 3D Perspective Scroll Reveal for Product Cards */
+.product-card[data-aos="fade-up"] {
+  transform: perspective(1200px) translateY(50px) rotateX(7deg) scale(0.94);
+  opacity: 0;
+  filter: blur(8px);
+  transition-property: transform, opacity, filter, box-shadow, border-color;
+  will-change: transform, opacity, filter;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
-.product-card[data-aos].aos-animate {
+.product-card[data-aos="fade-up"].aos-animate {
+  transform: perspective(1200px) translateY(0) rotateX(0deg) scale(1);
+  opacity: 1;
+  filter: blur(0);
   will-change: auto;
+}
+
+/* Image zoom-settle inside product card during scroll reveal */
+.product-card[data-aos="fade-up"] .product-img {
+  transform: scale(1.12);
+  filter: brightness(0.92);
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+.product-card[data-aos="fade-up"].aos-animate .product-img {
+  transform: scale(1);
+  filter: brightness(0.97);
+}
+
+/* Royal Golden Light Sheen on Card Entrance */
+.product-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 20%, rgba(212, 175, 55, 0.16) 45%, rgba(255, 248, 220, 0.28) 50%, rgba(212, 175, 55, 0.16) 55%, transparent 75%);
+  transform: translateX(-130%) skewX(-20deg);
+  pointer-events: none;
+  z-index: 6;
+  opacity: 0;
+}
+
+.product-card.aos-animate::after {
+  animation: prestigeCardSheen 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.18s;
+}
+
+@keyframes prestigeCardSheen {
+  0% {
+    transform: translateX(-130%) skewX(-20deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(170%) skewX(-20deg);
+    opacity: 0;
+  }
 }
 
 .product-card:hover {
@@ -2154,8 +2206,12 @@ html[data-theme="dark"] .quickview-price {
   .products-grid .product-card[data-aos] {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     visibility: visible !important;
     transition: transform 0.2s ease, border-color 0.2s ease !important;
+  }
+  .products-grid .product-card::after {
+    display: none !important;
   }
 
   /* Compact Horizontal Product Card for Mobile - FIXED WIDTH PREVENTS SQUISHING */
