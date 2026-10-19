@@ -15,6 +15,18 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
     rel="stylesheet">
 
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('prestige_theme');
+        var theme = savedTheme === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/aos.css">
@@ -115,6 +127,26 @@
           <span class="header-phone-sub">Консьерж-линия VIP</span>
         </a>
 
+        <!-- Theme Toggle Button (Light/Dark Mode) -->
+        <button class="action-icon-btn theme-toggle-btn" id="theme-toggle-btn" type="button" title="Переключить тему оформления" aria-label="Переключить тему оформления">
+          <!-- Sun Icon (Active in Dark Mode -> click for Light Mode) -->
+          <svg class="theme-icon theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon Icon (Active in Light Mode -> click for Dark Mode) -->
+          <svg class="theme-icon theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
         <button class="action-icon-btn cart-open-btn" title="Корзина" id="header-cart-btn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
@@ -139,6 +171,18 @@
       <a href="#catalog" class="nav-link" data-route="savatlar" onclick="filterCatalogBy('savatlar')">Саватлар (Корзины)</a>
       <a href="#roses" class="nav-link" data-route="roses">Королевские розы</a>
       <a href="#delivery" class="nav-link" data-route="delivery">Доставка & Консьерж</a>
+
+      <!-- Mobile Theme Selector Row -->
+      <div class="mobile-theme-row">
+        <span class="mobile-theme-label">Тема оформления</span>
+        <button class="mobile-theme-toggle-btn" id="mobile-theme-toggle" type="button" aria-label="Переключить тему оформления">
+          <span class="mobile-theme-text" id="mobile-theme-text">Светлая</span>
+          <span class="theme-switch-track">
+            <span class="theme-switch-thumb"></span>
+          </span>
+        </button>
+      </div>
+
       <div class="mobile-nav-footer">
         <a href="tel:+998712000088" class="mobile-nav-phone">
           📞 +998 (71) 200-00-88

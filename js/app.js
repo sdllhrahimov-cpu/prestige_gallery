@@ -430,9 +430,9 @@ function renderCatalog(filter = 'all', sort = 'popular') {
   }
 
   grid.innerHTML = filtered.map((product, index) => `
-    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="750" data-aos-delay="${(index % 4) * 100 + 50}">
+    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="350" data-aos-delay="${(index % 4) * 40}">
       <div class="product-card-media" onclick="openQuickView('${product.id}')">
-        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" />
+        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" decoding="async" />
         <span class="product-badge badge-${product.badgeType}">${product.badge}</span>
         <button class="fav-btn" onclick="event.stopPropagation(); toggleFavorite('${product.id}', this)" title="В избранное">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -476,9 +476,9 @@ function renderHomeBestsellers() {
   const bestsellers = PRODUCTS_DATA.filter(p => p.isBestseller).slice(0, 12);
 
   container.innerHTML = bestsellers.map((product, index) => `
-    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="800" data-aos-delay="${index * 120 + 80}">
+    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="350" data-aos-delay="${(index % 4) * 40}">
       <div class="product-card-media" onclick="openQuickView('${product.id}')">
-        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" />
+        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" decoding="async" />
         <span class="product-badge badge-${product.badgeType}">${product.badge}</span>
         <button class="fav-btn" onclick="event.stopPropagation(); toggleFavorite('${product.id}', this)" title="В избранное">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -523,9 +523,9 @@ function renderHomeSavatlar() {
   const savatlarList = PRODUCTS_DATA.filter(p => p.category === 'savatlar');
 
   container.innerHTML = savatlarList.map((product, index) => `
-    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="800" data-aos-delay="${(index % 3) * 120 + 80}">
+    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="350" data-aos-delay="${(index % 3) * 40}">
       <div class="product-card-media" onclick="openQuickView('${product.id}')">
-        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" />
+        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" decoding="async" />
         <span class="product-badge badge-${product.badgeType}">${product.badge}</span>
         <button class="fav-btn" onclick="event.stopPropagation(); toggleFavorite('${product.id}', this)" title="В избранное">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -583,9 +583,9 @@ function renderRosesMonobouquets() {
   const rosesList = PRODUCTS_DATA.filter(p => p.category === 'roses' || p.category === 'boxes' || p.title.includes('Rose') || p.title.includes('Hatbox'));
 
   container.innerHTML = rosesList.map((product, index) => `
-    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="800" data-aos-delay="${(index % 3) * 120 + 80}">
+    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="350" data-aos-delay="${(index % 3) * 40}">
       <div class="product-card-media" onclick="openQuickView('${product.id}')">
-        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" />
+        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" decoding="async" />
         <span class="product-badge badge-${product.badgeType}">${product.badge}</span>
         <button class="fav-btn" onclick="event.stopPropagation(); toggleFavorite('${product.id}', this)" title="В избранное">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -644,16 +644,98 @@ function updateFavoritesBadge() {
   });
 }
 
+// ==========================================================================
+// Theme Management (Light Mode Default, Dark Mode Option)
+// ==========================================================================
+function getStoredTheme() {
+  try {
+    const saved = localStorage.getItem('prestige_theme');
+    return saved === 'dark' ? 'dark' : 'light';
+  } catch (e) {
+    return 'light';
+  }
+}
+
+function applyTheme(theme, notify = false) {
+  const current = theme === 'dark' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', current);
+
+  try {
+    localStorage.setItem('prestige_theme', current);
+  } catch (e) {}
+
+  // Update desktop toggle button
+  const toggleBtn = document.getElementById('theme-toggle-btn');
+  if (toggleBtn) {
+    if (current === 'dark') {
+      toggleBtn.title = 'Переключить на светлую тему';
+      toggleBtn.setAttribute('aria-label', 'Переключить на светлую тему');
+    } else {
+      toggleBtn.title = 'Переключить на тёмную тему';
+      toggleBtn.setAttribute('aria-label', 'Переключить на тёмную тему');
+    }
+  }
+
+  // Update mobile status text
+  const mobileStatusText = document.getElementById('mobile-theme-text');
+  if (mobileStatusText) {
+    mobileStatusText.textContent = current === 'dark' ? 'Тёмная' : 'Светлая';
+  }
+
+  if (notify && typeof showToast === 'function') {
+    const msg = current === 'dark'
+      ? '🌙 Тёмная тема активирована'
+      : '☀️ Светлая тема активирована';
+    showToast(msg, 'info');
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+  document.documentElement.classList.add('theme-transitioning');
+  applyTheme(newTheme, true);
+
+  setTimeout(() => {
+    document.documentElement.classList.remove('theme-transitioning');
+  }, 400);
+}
+
+function initTheme() {
+  const initialTheme = getStoredTheme();
+  applyTheme(initialTheme, false);
+
+  const toggleBtn = document.getElementById('theme-toggle-btn');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+
+  const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
+  if (mobileToggleBtn) {
+    mobileToggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleTheme();
+    });
+  }
+}
+
 // App Initialization
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Theme (Defaults to Light Mode)
+  initTheme();
+
   // Initialize AOS (Animate On Scroll)
   if (window.AOS) {
     window.AOS.init({
-      duration: 800,
+      duration: 350,
       easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-      once: false,
+      once: true,
       mirror: false,
-      offset: 60
+      offset: 20
     });
   }
 
@@ -1091,4 +1173,6 @@ window.toggleFavorite = toggleFavorite;
 window.renderHomeSavatlar = renderHomeSavatlar;
 window.filterCatalogBy = filterCatalogBy;
 window.initPrestigeIntroAnimation = initPrestigeIntroAnimation;
+window.toggleTheme = toggleTheme;
+window.applyTheme = applyTheme;
 
