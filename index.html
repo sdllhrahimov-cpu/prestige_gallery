@@ -116,6 +116,7 @@
         <a href="#home" class="nav-link active" data-route="home">Главная</a>
         <a href="#catalog" class="nav-link" data-route="catalog">Каталог</a>
         <a href="#catalog" class="nav-link" data-route="savatlar" onclick="filterCatalogBy('savatlar')">Саватлар</a>
+        <a href="#catalog" class="nav-link" data-route="mini" onclick="filterCatalogBy('mini')">Мини-букеты</a>
         <a href="#roses" class="nav-link" data-route="roses">Розы 51/101</a>
         <a href="#delivery" class="nav-link" data-route="delivery">Доставка</a>
       </nav>
@@ -169,6 +170,7 @@
       <a href="#home" class="nav-link" data-route="home">Главная</a>
       <a href="#catalog" class="nav-link" data-route="catalog">Каталог букетов</a>
       <a href="#catalog" class="nav-link" data-route="savatlar" onclick="filterCatalogBy('savatlar')">Саватлар (Корзины)</a>
+      <a href="#catalog" class="nav-link" data-route="mini" onclick="filterCatalogBy('mini')">Мини-букеты (Mini buketlar)</a>
       <a href="#roses" class="nav-link" data-route="roses">Королевские розы</a>
       <a href="#delivery" class="nav-link" data-route="delivery">Доставка & Консьерж</a>
 
@@ -277,6 +279,38 @@
             <button class="btn btn-secondary btn-lg"
               onclick="openFastOrderModal(PRODUCTS_DATA.find(p => p.id === 'savat-panier-royal-blanc') || PRODUCTS_DATA[0])">ЗАКАЗАТЬ
               В 1 КЛИК</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dedicated Mini Buketlar Showcase Section -->
+    <section class="mini-buket-section" id="home-mini-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+          <span class="mini-header-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            КОМПАКТНОЕ ИЗЯЩЕСТВО · PETITE FLEURS
+          </span>
+          <h2 class="section-title">Изящные мини-букеты <span class="italic">Mini buketlar</span></h2>
+          <p class="section-subtitle">Утонченные комплимент-букеты и миниатюрные шедевры высокой флористики. Идеальный нежный жест внимания для свиданий, признаний и приятных сюрпризов без повода.</p>
+          <span class="mobile-scroll-hint">⟵ Yonga suring (Scroll) ⟶</span>
+        </div>
+
+        <div class="products-grid" id="home-mini-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="mini-banner" data-aos="zoom-in" data-aos-duration="850">
+          <div class="mini-banner-text">
+            <span class="kicker kicker-gold">ЭКСПРЕСС-ДОСТАВКА КОМПЛИМЕНТОВ</span>
+            <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: #ffffff; margin: 6px 0 8px 0;">Хотите сделать неожиданный сюрприз прямо сейчас?</h3>
+            <p style="color: var(--color-text-body); font-size: 0.9rem; margin: 0;">Доставим выбранный мини-букет всего за 45–60 минут по Ташкенту в фирменной подарочной коробке с шелковой лентой и открыткой ручной работы.</p>
+          </div>
+          <div class="mini-banner-actions">
+            <button class="btn btn-primary btn-lg" onclick="filterCatalogBy('mini')">СМОТРЕТЬ ВСЕ МИНИ-БУКЕТЫ</button>
+            <button class="btn btn-secondary btn-lg"
+              onclick="openFastOrderModal(PRODUCTS_DATA.find(p => p.id === 'mini-petite-aurore') || PRODUCTS_DATA[0])">ЗАКАЗАТЬ В 1 КЛИК</button>
           </div>
         </div>
       </div>
@@ -475,6 +509,7 @@
           <div class="catalog-pills">
             <button class="catalog-filter-btn active" data-filter="all">Все</button>
             <button class="catalog-filter-btn" data-filter="savatlar">Корзины (Саватлар)</button>
+            <button class="catalog-filter-btn" data-filter="mini">Мини-букеты</button>
             <button class="catalog-filter-btn" data-filter="authors">Авторские</button>
             <button class="catalog-filter-btn" data-filter="roses">Королевские розы</button>
             <button class="catalog-filter-btn" data-filter="monobouquets">Монобукеты</button>
@@ -1253,6 +1288,7 @@
         <h4 class="footer-title">Коллекции</h4>
         <ul class="footer-links">
           <li><a href="#catalog" onclick="filterCatalogBy('savatlar')">Королевские корзины (Саватлар)</a></li>
+          <li><a href="#catalog" onclick="filterCatalogBy('mini')">Мини-букеты (Petite Fleurs)</a></li>
           <li><a href="#catalog" onclick="navigateTo('catalog')">Авторские букеты</a></li>
           <li><a href="#roses" onclick="navigateTo('roses')">Королевские розы 101</a></li>
           <li><a href="#roses" onclick="navigateTo('roses')">Конструктор роз</a></li>

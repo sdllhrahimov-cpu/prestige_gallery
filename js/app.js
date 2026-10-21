@@ -562,6 +562,53 @@ function renderHomeSavatlar() {
   }
 }
 
+// Render dedicated Mini-buketlar (Petite Bouquets) on Home page
+function renderHomeMiniBouquets() {
+  const container = document.getElementById('home-mini-grid');
+  if (!container) return;
+
+  const miniList = PRODUCTS_DATA.filter(p => p.category === 'mini');
+
+  container.innerHTML = miniList.map((product, index) => `
+    <div class="product-card" data-id="${product.id}" data-aos="fade-up" data-aos-duration="580" data-aos-delay="${(index % 3) * 60}">
+      <div class="product-card-media" onclick="openQuickView('${product.id}')">
+        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" decoding="async" />
+        <span class="product-badge badge-${product.badgeType}">${product.badge}</span>
+        <button class="fav-btn" onclick="event.stopPropagation(); toggleFavorite('${product.id}', this)" title="В избранное">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <div class="quick-view-overlay">БЫСТРЫЙ ПРОСМОТР</div>
+      </div>
+      <div class="product-card-body">
+        <div class="product-meta">
+          <span class="product-cat">МИНИ-БУКЕТЫ</span>
+          <span class="product-stems-tag">${product.stems}</span>
+        </div>
+        <h3 class="product-title" onclick="openQuickView('${product.id}')">${product.title}</h3>
+        <div class="product-price-row">
+          <div class="price-val">${product.priceFormatted}</div>
+          <span class="delivery-pill">45–60 мин</span>
+        </div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm flex-1" onclick="window.Cart.addItem(PRODUCTS_DATA.find(p => p.id === '${product.id}')); showToast('${product.title} добавлен в корзину');">
+            В КОРЗИНУ
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="openFastOrderModal(PRODUCTS_DATA.find(p => p.id === '${product.id}'));">
+            В 1 КЛИК
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  if (window.AOS) {
+    setTimeout(() => window.AOS.refresh(), 50);
+  }
+  if (window.initDragScroll) {
+    setTimeout(window.initDragScroll, 60);
+  }
+}
+
 // Direct filter and navigate to catalog category
 function filterCatalogBy(category) {
   navigateTo('catalog');
@@ -815,6 +862,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render initial products
   renderHomeBestsellers();
   renderHomeSavatlar();
+  renderHomeMiniBouquets();
   renderCatalog('all', 'popular');
   renderRosesMonobouquets();
   setTimeout(initDragScroll, 80);
@@ -1171,6 +1219,7 @@ window.navigateTo = navigateTo;
 window.showToast = showToast;
 window.toggleFavorite = toggleFavorite;
 window.renderHomeSavatlar = renderHomeSavatlar;
+window.renderHomeMiniBouquets = renderHomeMiniBouquets;
 window.filterCatalogBy = filterCatalogBy;
 window.initPrestigeIntroAnimation = initPrestigeIntroAnimation;
 window.toggleTheme = toggleTheme;
